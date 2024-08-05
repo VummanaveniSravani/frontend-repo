@@ -1,17 +1,14 @@
 {
   "files": {
-    "main.css": "/frontend/static/css/main.7ce30754.css",
-    "main.js": "/frontend/static/js/main.93a62aac.js",
-    "static/js/453.9f012a92.chunk.js": "/frontend/static/js/453.9f012a92.chunk.js",
-    "static/media/authBackground.jpg": "/frontend/static/media/authBackground.0b08a66aa55a75739d28.jpg",
-    "static/media/logo.svg": "/frontend/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
-    "index.html": "/frontend/index.html",
-    "main.7ce30754.css.map": "/frontend/static/css/main.7ce30754.css.map",
-    "main.93a62aac.js.map": "/frontend/static/js/main.93a62aac.js.map",
-    "453.9f012a92.chunk.js.map": "/frontend/static/js/453.9f012a92.chunk.js.map"
+    "main.css": "/frontend-repo/static/css/main.16ab41ba.css",
+    "main.js": "/frontend-repo/static/js/main.27bb14be.js",
+    "static/media/authBackground.jpg": "/frontend-repo/static/media/authBackground.0b08a66aa55a75739d28.jpg",
+    "index.html": "/frontend-repo/index.html",
+    "main.16ab41ba.css.map": "/frontend-repo/static/css/main.16ab41ba.css.map",
+    "main.27bb14be.js.map": "/frontend-repo/static/js/main.27bb14be.js.map"
   },
   "entrypoints": [
-    "static/css/main.7ce30754.css",
-    "static/js/main.93a62aac.js"
+    "static/css/main.16ab41ba.css",
+    "static/js/main.27bb14be.js"
   ]
 }
