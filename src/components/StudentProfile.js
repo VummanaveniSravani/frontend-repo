@@ -63,6 +63,9 @@ const StudentProfile = ({ newStudent }) => {
 
     return (
         <div className='container-fluid'>
+             {/* <div className='float-end pt-3'>
+                <Link className='btn btn-success' type='button' to="/admin">Go Back</Link>
+            </div> */}
             <h3 className='text-center py-3'>Student Profile</h3>
             <div className="table-responsive">
                 <table className="table table-striped">
@@ -190,9 +193,7 @@ const StudentProfile = ({ newStudent }) => {
                     </tbody>
                 </table>
             </div>
-            <div className='float-end pt-3'>
-                <Link className='btn btn-success' type='button' to="/admin">Go Back</Link>
-            </div>
+           
         </div>
     );
 }

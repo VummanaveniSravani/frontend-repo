@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-const StudentForm = ({ onStudentAdded }) => {
+const StudentForm = ({ onStudentAdded = () => {} }) =>  {
   const [finame, setFirstname] = useState('');
   const [laname, setLastname] = useState('');
   const [faname, setFathername] = useState('');
@@ -178,16 +178,17 @@ const StudentForm = ({ onStudentAdded }) => {
           ></textarea>
           {errors.address && <span style={{ color: 'red' }}>{errors.address}</span>}
         </div>
+        
+        <div className="col-12 text-center pt-4">
+          <button className="btn btn-primary btn-text rounded-0 width-25" type="submit">Submit</button>
+        </div>
         {submitted && (
-          <div className="col-12">
+          <div className="col-12 pt-3">
             <div className="alert alert-success" role="alert">
               Details Submitted successfully!
             </div>
           </div>
         )}
-        <div className="col-12 text-center pt-4">
-          <button className="btn btn-primary btn-text rounded-0 width-25" type="submit">Submit</button>
-        </div>
       </form>
       {/* <div className='pt-3'><Link to="/upload-documents">Upload Student Documents</Link></div> */}
       {/* <DocumentUploadForm /> */}

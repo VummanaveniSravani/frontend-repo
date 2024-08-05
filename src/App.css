@@ -40,3 +40,7 @@
     width: 100%!important;
   }
 }
+
+table tr td{
+  text-transform: capitalize;
+}

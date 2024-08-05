@@ -25,7 +25,7 @@ const Faculty = () => {
                     </div>
                    
                 </div>
-                <AllTabs role={userRole}/>
+                <AllTabs />
         </div>
     );
 }

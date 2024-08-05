@@ -3,6 +3,7 @@ import StudentForm from './StudentForm';
 import StudentDataTwo from './StudentDataTwo';
 import CocurricularActivitiewThree from './CocurricularActivitiewThree';
 import FilterStudentMarksTwo from './FilterStudentMarksTwo';
+import UploadMarksTwo from './UploadMarksTwo';
 
 const ParentActivityTab = ({ role }) => {
     const [showForm1, setShowForm1] = useState(false);
@@ -75,7 +76,10 @@ const ParentActivityTab = ({ role }) => {
                
 
                 {showForm1 && (
-                    <FilterStudentMarksTwo />
+                     <div>
+                     <FilterStudentMarksTwo />
+                     <UploadMarksTwo/>
+                     </div>
                  )}
                 {showForm2 && (
                                    <StudentDataTwo/>

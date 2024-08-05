@@ -1,7 +1,7 @@
 import React, { useState, useEffect }from 'react';
 import axios from 'axios';
 import DisplayMarks from './DisplayMarks';
-
+import FilterUploadedMarks from './FilterUploadedMarks';
 const FilterStudentMarks = () => {
     const [searchRollNo, setSearchRollNo] = useState('');
   const [searchedStudent, setSearchedStudent] = useState(null);
@@ -45,6 +45,7 @@ const FilterStudentMarks = () => {
 
             {searchedStudent && <DisplayMarks studentDetails={searchedStudent} />}
             
+            {/* <FilterUploadedMarks/> */}
 
         </div>
     );

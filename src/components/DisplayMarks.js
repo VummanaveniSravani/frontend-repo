@@ -66,49 +66,51 @@ const DisplayMarks = ({ studentDetails }) => {
     return (
       <div key={semester} className='mb-4'>
         <h4>{semester}</h4>
-        <table className='table'>
-          <thead>
-            <tr>
-              <th>Subject Code</th>
-              <th>Subject</th>
-              <th>Credits</th>
-              <th>Internal Marks</th>
-              <th>Grade</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {marks.map((mark, index) => (
-              <tr key={index}>
-                {editingMark && editingMark._id === mark._id ? (
-                  <>
-                    <td><input name="code" value={formValues.code} onChange={handleInputChange} /></td>
-                    <td><input name="subject" value={formValues.subject} onChange={handleInputChange} /></td>
-                    <td><input name="externalMarks" value={formValues.externalMarks} onChange={handleInputChange} /></td>
-                    <td><input name="internalMarks" value={formValues.internalMarks} onChange={handleInputChange} /></td>
-                    <td><input name="grade" value={formValues.grade} onChange={handleInputChange} /></td>
-                    <td>
-                      <button onClick={handleSave}>Save</button>
-                      <button onClick={() => setEditingMark(null)}>Cancel</button>
-                    </td>
-                  </>
-                ) : (
-                  <>
-                    <td>{mark.code}</td>
-                    <td>{mark.subject}</td>
-                    <td>{mark.externalMarks}</td>
-                    <td>{mark.internalMarks}</td>
-                    <td>{mark.grade}</td>
-                    <td>
-                      <button onClick={() => handleEdit(mark)}>Edit</button>
-                      <button onClick={() => handleDelete(mark._id)}>Delete</button>
-                    </td>
-                  </>
-                )}
+        <div className='table-responsive'>
+          <table className='table table-striped'>
+            <thead>
+              <tr>
+                <th>Subject Code</th>
+                <th>Subject</th>
+                <th>Credits</th>
+                <th>Internal Marks</th>
+                <th>Grade</th>
+                <th>Actions</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {marks.map((mark, index) => (
+                <tr key={index}>
+                  {editingMark && editingMark._id === mark._id ? (
+                    <>
+                      <td><input name="code" value={formValues.code} onChange={handleInputChange} /></td>
+                      <td><input name="subject" value={formValues.subject} onChange={handleInputChange} /></td>
+                      <td><input name="externalMarks" value={formValues.externalMarks} onChange={handleInputChange} /></td>
+                      <td><input name="internalMarks" value={formValues.internalMarks} onChange={handleInputChange} /></td>
+                      <td><input name="grade" value={formValues.grade} onChange={handleInputChange} /></td>
+                      <td>
+                        <button onClick={handleSave} className='me-2'>Save</button>
+                        <button onClick={() => setEditingMark(null)}>Cancel</button>
+                      </td>
+                    </>
+                  ) : (
+                    <>
+                      <td>{mark.code}</td>
+                      <td>{mark.subject}</td>
+                      <td>{mark.externalMarks}</td>
+                      <td>{mark.internalMarks}</td>
+                      <td>{mark.grade}</td>
+                      <td>
+                        <button onClick={() => handleEdit(mark)} className='me-2'>Edit</button>
+                        <button onClick={() => handleDelete(mark._id)}>Delete</button>
+                      </td>
+                    </>
+                  )}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     );
   };

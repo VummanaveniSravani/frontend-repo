@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import CocurricularTabs from './CocurricularTabs';
 
-const CocurricularActivities = ({ onActivityAdded }) => {
+const CocurricularActivities = ({ onActivityAdded = () => {} }) => {
   const [sname, setStudentname] = useState('');
   const [rno, setRollno] = useState('');
   const [branch, setBranch] = useState('');
@@ -27,8 +27,9 @@ const CocurricularActivities = ({ onActivityAdded }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setSubmitted(false); // Reset submitted state before validation
+
     if (!validateForm()) {
-      setSubmitted(false);
       return;
     }
 
@@ -47,7 +48,8 @@ const CocurricularActivities = ({ onActivityAdded }) => {
       setActivities('');
       setDate('');
       setDescription('');
-      setSubmitted(true);
+      setErrors({});
+      setSubmitted(true); // Set submitted state to true upon successful submission
     } catch (error) {
       console.error('Error adding activity:', error);
       setSubmitted(false);
@@ -60,11 +62,10 @@ const CocurricularActivities = ({ onActivityAdded }) => {
         <h5>Enter Activities</h5>
         <form className='row' onSubmit={handleSubmit}>
           <div className="col-12 col-sm-6 col-md-6 col-lg-6">
-            <label htmlFor="validationDefault01" className="form-label"></label>
+            <label className="form-label"></label>
             <input
               type="text"
               className="form-control rounded-0"
-              id="validationDefault01"
               placeholder='Student Name'
               value={sname}
               onChange={(e) => setStudentname(e.target.value)}
@@ -72,11 +73,10 @@ const CocurricularActivities = ({ onActivityAdded }) => {
             {errors.sname && <span style={{ color: 'red' }}>{errors.sname}</span>}
           </div>
           <div className="col-12 col-sm-6 col-md-6 col-lg-6">
-            <label htmlFor="validationDefault03" className="form-label"></label>
+            <label className="form-label"></label>
             <input
               type="text"
               className="form-control rounded-0"
-              id="validationDefault03"
               placeholder='Roll No'
               value={rno}
               onChange={(e) => setRollno(e.target.value)}
@@ -84,11 +84,10 @@ const CocurricularActivities = ({ onActivityAdded }) => {
             {errors.rno && <span style={{ color: 'red' }}>{errors.rno}</span>}
           </div>
           <div className="col-12 col-sm-6 col-md-6 col-lg-6">
-            <label htmlFor="validationDefault04" className="form-label"></label>
+            <label className="form-label"></label>
             <input
               type="text"
               className="form-control rounded-0"
-              id="validationDefault04"
               placeholder='Branch'
               value={branch}
               onChange={(e) => setBranch(e.target.value)}
@@ -96,11 +95,10 @@ const CocurricularActivities = ({ onActivityAdded }) => {
             {errors.branch && <span style={{ color: 'red' }}>{errors.branch}</span>}
           </div>
           <div className="col-12 col-sm-6 col-md-6 col-lg-6">
-            <label htmlFor="validationDefault07" className="form-label"></label>
+            <label className="form-label"></label>
             <input
               type="text"
               className="form-control rounded-0"
-              id="validationDefault07"
               placeholder='Activity Name'
               value={aname}
               onChange={(e) => setActivities(e.target.value)}
@@ -108,11 +106,10 @@ const CocurricularActivities = ({ onActivityAdded }) => {
             {errors.aname && <span style={{ color: 'red' }}>{errors.aname}</span>}
           </div>
           <div className="col-12 col-sm-6 col-md-6 col-lg-6">
-            <label htmlFor="validationDefault06" className="form-label"></label>
+            <label className="form-label"></label>
             <input
               type="date"
               className="form-control rounded-0"
-              id="validationDefault06"
               placeholder='Date of event'
               value={date}
               onChange={(e) => setDate(e.target.value)}
@@ -120,33 +117,30 @@ const CocurricularActivities = ({ onActivityAdded }) => {
             {errors.date && <span style={{ color: 'red' }}>{errors.date}</span>}
           </div>
           <div className="col-12 col-sm-6 col-md-6 col-lg-6">
-            <label htmlFor="validationDefault05" className="form-label"></label>
+            <label className="form-label"></label>
             <input
               type="text"
               className="form-control rounded-0"
-              id="validationDefault05"
               placeholder='Description'
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />
             {errors.description && <span style={{ color: 'red' }}>{errors.description}</span>}
           </div>
-
-          {submitted && (
-            <div className="col-12">
-              <div className="alert alert-success" role="alert">
-                Details Submitted successfully!
-              </div>
-            </div>
-          )}
+          
           <div className="col-12 text-center pt-4">
             <button className="btn btn-primary btn-text rounded-0 width-25" type="submit">
               Submit
             </button>
           </div>
         </form>
-        <div>
-        </div>
+        {submitted && (
+          <div className="col-12 pt-3">
+            <div className="alert alert-success" role="alert">
+              Details Submitted successfully!
+            </div>
+          </div>
+        )}
       </div>
       <CocurricularTabs />
     </div>

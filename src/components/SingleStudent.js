@@ -60,7 +60,7 @@ const SingleStudent = ({ rollNoFilter }) => {
         <div>
             {filteredStudents.length > 0 ? (
                 <div className='table-responsive container-fluid w-100 py-5'>
-                    <h2 className='py-3'>Student List</h2>
+                    <h2 className='py-3'>Student Activities</h2>
                     <table className="table table-striped">
                         <thead>
                             <tr>

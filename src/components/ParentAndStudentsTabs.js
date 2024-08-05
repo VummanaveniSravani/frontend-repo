@@ -3,6 +3,7 @@ import StudentForm from './StudentForm';
 import StudentDataTwo from './StudentDataTwo';
 import CocurricularActivitiewTwo from './CocurricularActivitiewTwo';
 import FilterStudentMarksTwo from './FilterStudentMarksTwo';
+import UploadMarksTwo from './UploadMarksTwo';
 
 const PasTab = ({ role }) => {
     const [showForm1, setShowForm1] = useState(false);
@@ -42,15 +43,15 @@ const PasTab = ({ role }) => {
     return (
         <div className='container text-center'>
             <div className='row py-4'>
-                
-                 <div className='col-md-4 mb-3'>
-                        <button
-                            type="button"
-                            className={activeButton === 1 ? 'active' : ''}
-                            onClick={() => toggleForm(1)}
-                        >
-                            View Your Semester Marks
-                        </button>
+
+                <div className='col-md-4 mb-3'>
+                    <button
+                        type="button"
+                        className={activeButton === 1 ? 'active' : ''}
+                        onClick={() => toggleForm(1)}
+                    >
+                        View Your Semester Marks
+                    </button>
                 </div>
                 <div className='col-md-4 mb-3'>
                     <button
@@ -58,7 +59,7 @@ const PasTab = ({ role }) => {
                         className={activeButton === 2 ? 'active' : ''}
                         onClick={() => toggleForm(2)}
                     >
-                       View Your Academic Profile
+                        View Your Academic Profile
                     </button>
                 </div>
                 <div className='col-md-4 mb-3'>
@@ -72,14 +73,21 @@ const PasTab = ({ role }) => {
                 </div>
             </div>
             <div className='row pt-3 text-center'>
-               
+
 
                 {showForm1 && (
-                    <FilterStudentMarksTwo/>
-                 )}
+                     <div>
+                    <FilterStudentMarksTwo />
+                    <UploadMarksTwo/>
+                    </div>
+                )}
                 {showForm2 && (
-                                   <StudentDataTwo/>
-                                )}
+                   
+                       
+
+                        <StudentDataTwo />
+                    
+                )}
 
                 {showForm3 && (
                     <CocurricularActivitiewTwo />

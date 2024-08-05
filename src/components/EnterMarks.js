@@ -3,6 +3,7 @@ import EnterMarksCse from './EnterMarksCse';
 import EnterMarksEce from './EnterMarksEce';
 import EnterMarksEee from './EnterMarksEee';
 import axios from 'axios';
+import UploadMarks from './UploadMarks';
 
 const EnterMarks = () => {
   const [branch, setBranch] = useState('');
@@ -41,6 +42,7 @@ const EnterMarks = () => {
 
   return (
     <div className='container'>
+      <UploadMarks/>
       <form className='row pt-5'>
         <div className="col-md-3 mb-3">
           <input
