@@ -40,7 +40,7 @@ const Signup = () => {
         if (!validateForm()) {
             return;
         }
-        axios.post('http://localhost:5000/signup', input)
+        axios.post('http://localhost:4000/signup', input)
             .then(response => {
                 console.log(response.data);
                 setSubmitted(true);

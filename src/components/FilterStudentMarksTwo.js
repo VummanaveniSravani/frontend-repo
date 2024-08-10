@@ -16,7 +16,7 @@ const FilterStudentMarksTwo = () => {
         }
 
         try {
-            const { data } = await axios.get(`http://localhost:5000/api/marks/${searchRollNo}`);
+            const { data } = await axios.get(`http://localhost:4000/api/marks/${searchRollNo}`);
             if (data.length > 0) {
                 const details = {
                     ...data[0],

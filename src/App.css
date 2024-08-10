@@ -44,3 +44,25 @@
 table tr td{
   text-transform: capitalize;
 }
+
+.table-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Four columns */
+  gap: 20px; /* Space between tables */
+}
+
+.table-container {
+  /* border: 1px solid #ddd; */
+  padding: 10px;
+}
+
+.table-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-container th, .table-container td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}

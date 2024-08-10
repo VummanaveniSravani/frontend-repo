@@ -14,12 +14,12 @@ const DocumentUploadForm = () => {
   }, []);
 
   const showPdf = (pdf) => {
-    window.open(`http://localhost:5000/files/${pdf}`, '_blank', 'noreferrer');
+    window.open(`http://localhost:4000/files/${pdf}`, '_blank', 'noreferrer');
   };
 
   const getPdf = async () => {
     try {
-      const result = await axios.get("http://localhost:5000/get-files", {
+      const result = await axios.get("http://localhost:4000/get-files", {
         params: { rollNo: filterRollNo }
       });
       console.log(result.data.data);
@@ -58,7 +58,7 @@ const DocumentUploadForm = () => {
     formData.append('file', editedFile);
 
     try {
-      const result = await axios.post('http://localhost:5000/upload-files', formData, {
+      const result = await axios.post('http://localhost:4000/upload-files', formData, {
         headers: { "Content-Type": "multipart/form-data" }
       });
       console.log(result.data);

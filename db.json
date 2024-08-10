@@ -23,26 +23,92 @@
       "dob": "2024-08-21",
       "address": "Hyd",
       "document": "male"
+    },
+    {
+      "id": "dcd9",
+      "finame": "Sravani",
+      "laname": "Vummanaveni",
+      "faname": "Govind raj",
+      "rno": "6453453",
+      "mno": "1233456780",
+      "email": "sravani@gmail.com",
+      "dob": "2008-02-13",
+      "address": "Plno:12, om sri shioav sai nagar colony, Cheeryala",
+      "document": "female"
+    },
+    {
+      "id": "ffcc",
+      "finame": "Vikram",
+      "laname": "Kesari",
+      "faname": "Govind raj",
+      "rno": "16R11A05M7",
+      "mno": "7093386680",
+      "email": "vikram@gcet.com",
+      "dob": "1999-01-07",
+      "address": "Plno:12, om sri shioav sai nagar colony, Cheeryala",
+      "document": "male"
     }
   ],
   "activity": [
     {
-      "id": "cde6",
       "sname": "Sravani",
       "rno": "16R11A05M2",
       "branch": "CSE",
       "aname": "Cricket",
       "date": "2024-08-21",
-      "description": "Participating"
+      "description": "Participating",
+      "host": "Geetanjali College",
+      "id": "cde6"
     },
     {
-      "id": "93ca",
-      "sname": "Ravi",
-      "rno": "16R11A05M3",
+      "id": "876e",
+      "sname": "Vikram",
+      "rno": "16R11A05M7",
+      "branch": "CSE",
+      "aname": "Cricket",
+      "date": "2024-08-22",
+      "description": "Participating",
+      "host": "Geetanjali College"
+    },
+    {
+      "id": "1b89",
+      "sname": "DEVARAJU DIKSHITH RAJU\t",
+      "rno": "22R11A05E9",
+      "branch": "CSE",
+      "aname": "Cricket",
+      "date": "2024-08-08",
+      "description": "Participating",
+      "host": "Geetanjali Engineering College"
+    },
+    {
+      "id": "3abc",
+      "sname": "LAVURI RAMLAL NAYAK",
+      "rno": "22R11A0570",
+      "branch": "CSE",
+      "aname": "Cricket",
+      "date": "2024-08-29",
+      "description": "Participating",
+      "host": "Geetanjali college"
+    },
+    {
+      "id": "c7d8",
+      "sname": "LAVURI RAMLAL NAYAK\t",
+      "rno": "22R11A0570",
       "branch": "CSE",
       "aname": "Badminton",
-      "date": "2024-08-14",
-      "description": "pARTICIPATING"
+      "date": "2024-08-22",
+      "description": "Participating",
+      "host": "Geetanjali"
+    },
+    {
+      "id": "1dfb",
+      "sname": "siud",
+      "rno": "16R11A05M7\t",
+      "branch": "cse",
+      "aname": "aa",
+      "date": "2024-08-22",
+      "description": "y",
+      "host": "geetanjali"
     }
   ],
   "saveMarks": [

@@ -69,6 +69,8 @@ const SingleStudentActivity = ({ rollNoFilter }) => {
                                 <th>Activity Name</th>
                                 <th>Date of Activity</th>
                                 <th>Description</th>
+                                <th>Hosted By</th>
+
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -83,6 +85,8 @@ const SingleStudentActivity = ({ rollNoFilter }) => {
                                             <td><input type="text" name="aname" value={editedActivity.aname} onChange={handleChange} /></td>
                                             <td><input type="date" name="date" value={editedActivity.date} onChange={handleChange} /></td>
                                             <td><input type="text" name="description" value={editedActivity.description} onChange={handleChange} /></td>
+                                            <td><input type="text" name="host" value={editedActivity.host} onChange={handleChange} /></td>
+
                                             <td>
                                                 <button onClick={() => handleSave(activity.id)}>Save</button>
                                                 <button onClick={handleCancel}>Cancel</button>
@@ -96,6 +100,7 @@ const SingleStudentActivity = ({ rollNoFilter }) => {
                                             <td>{activity.aname}</td>
                                             <td>{activity.date}</td>
                                             <td>{activity.description}</td>
+                                            <td>{activity.host}</td>
                                             <td>
                                                 <button onClick={() => handleEdit(activity)}>Edit</button>
                                                 <button onClick={() => handleDelete(activity.id)}>Delete</button>

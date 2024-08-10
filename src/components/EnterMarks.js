@@ -28,7 +28,7 @@ const EnterMarks = () => {
 
   const handleMarksSubmit = async (semester, mark) => {
     try {
-      await axios.post('http://localhost:5000/api/marks', {
+      await axios.post('http://localhost:4000/api/marks', {
         ...studentDetails,
         semester,
         ...mark,

@@ -4,6 +4,9 @@ import AcadamicsProfile from './AcadamicsProfile';
 import CocurricularActivities from './CocurricularActivities';
 import EnterMarks from './EnterMarks';
 import FilterStudentMarks from './FilterStudentMarks';
+import WholeStudentProfile from './WholeStudentProfile';
+import UploadStudentDetails from './UploadStudentDetails';
+import ExtraCuricullarActivities from './ExtraCuricullarActivities';
 
 const AllTabs = ({ role }) => {
     const [showForm1, setShowForm1] = useState(false);
@@ -11,6 +14,8 @@ const AllTabs = ({ role }) => {
     const [showForm3, setShowForm3] = useState(false);
     const [showForm4, setShowForm4] = useState(false);
     const [showForm5, setShowForm5] = useState(false);
+    const [showForm6, setShowForm6] = useState(false);
+    const [showForm7, setShowForm7] = useState(false);
 
     const [activeButton, setActiveButton] = useState(null);
 
@@ -21,6 +26,8 @@ const AllTabs = ({ role }) => {
             setShowForm3(false);
             setShowForm4(false);
             setShowForm5(false);
+            setShowForm6(false);
+            setShowForm7(false);
             setActiveButton(1);
         } else if (formNumber === 2) {
             setShowForm1(false);
@@ -28,6 +35,8 @@ const AllTabs = ({ role }) => {
             setShowForm3(false);
             setShowForm4(false);
             setShowForm5(false);
+            setShowForm6(false);
+            setShowForm7(false);
             setActiveButton(2);
         } else if (formNumber === 3) {
             setShowForm1(false);
@@ -35,6 +44,8 @@ const AllTabs = ({ role }) => {
             setShowForm3(true);
             setShowForm4(false);
             setShowForm5(false);
+            setShowForm6(false);
+            setShowForm7(false);
             setActiveButton(3);
         } else if (formNumber === 4) {
             setShowForm1(false);
@@ -42,6 +53,8 @@ const AllTabs = ({ role }) => {
             setShowForm3(false);
             setShowForm4(true);
             setShowForm5(false);
+            setShowForm6(false);
+            setShowForm7(false);
             setActiveButton(4);
         }
         else if (formNumber === 5) {
@@ -50,13 +63,35 @@ const AllTabs = ({ role }) => {
             setShowForm3(false);
             setShowForm4(false);
             setShowForm5(true);
+            setShowForm6(false);
+            setShowForm7(false);
             setActiveButton(5);
+        }
+        else if (formNumber === 6) {
+            setShowForm1(false);
+            setShowForm2(false);
+            setShowForm3(false);
+            setShowForm4(false);
+            setShowForm5(false);
+            setShowForm6(true);
+            setShowForm7(false);
+            setActiveButton(6);
+        }
+        else if (formNumber === 7) {
+            setShowForm1(false);
+            setShowForm2(false);
+            setShowForm3(false);
+            setShowForm4(false);
+            setShowForm5(false);
+            setShowForm6(false);
+            setShowForm7(true);
+            setActiveButton(7);
         }
     };
 
     return (
         <div className='container text-center'>
-            <div className='d-flex gap-5 align-items-center justify-content-center py-4'>
+            <div className='d-flex gap-2 align-items-center justify-content-center py-4'>
                 {role === 'admin' && (
                     <div className='mb-3'>
                         <button
@@ -83,7 +118,7 @@ const AllTabs = ({ role }) => {
                             className={activeButton === 5 ? 'active' : ''}
                             onClick={() => toggleForm(5)}
                         >
-                            View Student Sem Marks 
+                            View Academics Profile 
                         </button>
                 </div>
 
@@ -95,7 +130,7 @@ const AllTabs = ({ role }) => {
                         className={activeButton === 1 ? 'active' : ''}
                         onClick={() => toggleForm(1)}
                     >
-                        Academic Profile
+                        View Student Details
                     </button>
                 </div>
                 <div className='mb-3'>
@@ -105,6 +140,24 @@ const AllTabs = ({ role }) => {
                         onClick={() => toggleForm(2)}
                     >
                         Co-curricular Activities
+                    </button>
+                </div>
+                <div className='mb-3'>
+                    <button
+                        type="button"
+                        className={activeButton === 6 ? 'active' : ''}
+                        onClick={() => toggleForm(6)}
+                    >
+                        Extra-curricular Activities
+                    </button>
+                </div>
+                <div className='mb-3'>
+                    <button
+                        type="button"
+                        className={activeButton === 7 ? 'active' : ''}
+                        onClick={() => toggleForm(7)}
+                    >
+                       Student Profile
                     </button>
                 </div>
             </div>
@@ -124,7 +177,16 @@ const AllTabs = ({ role }) => {
                 )}
 
                 {showForm3 && (
+                    <div>
                     <StudentForm />
+                    <UploadStudentDetails/>
+                    </div>
+                )}
+                 {showForm6 && (
+                    <ExtraCuricullarActivities/>
+                )}
+                  {showForm7 && (
+                    <WholeStudentProfile />
                 )}
             </div>
         </div>

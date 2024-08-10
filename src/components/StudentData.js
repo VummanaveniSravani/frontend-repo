@@ -18,10 +18,9 @@ const StudentData = () => {
     <div>
       {/* <StudentForm onStudentAdded={handleStudentAdded} /> */}
       <div>
-        <h5>Filter by Roll No:</h5>
-        <input type="text" value={rollNoFilter} onChange={handleRollNoChange} placeholder='Roll No' />
+        {/* <input type="text" value={rollNoFilter} onChange={handleRollNoChange} placeholder='Roll No' /> */}
       </div>
-      <SingleStudent rollNoFilter={rollNoFilter} />
+      <SingleStudent/>
     </div>
   );
 };

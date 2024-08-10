@@ -5,7 +5,7 @@ const UploadMarks = () => {
     const [file, setFile] = useState(null);
     const [data, setData] = useState([]);
     const [rollNo, setRollNo] = useState('');
-    const [semester, setSemester] = useState(''); // Add state for selected semester
+    const [semester, setSemester] = useState(''); // State for selected semester
     const [filteredData, setFilteredData] = useState([]);
     const [studentDetails, setStudentDetails] = useState(null);
     const [message, setMessage] = useState('');
@@ -64,29 +64,38 @@ const UploadMarks = () => {
         }
     };
 
-    const handleFilter = (e) => {
+    const handleFilter = async (e) => {
         e.preventDefault(); // Prevent the form from submitting
 
-        const filtered = data.filter(student => 
-            student.rollNo === rollNo && student.semester === semester
-        );
-        
-        if (filtered.length > 0) {
-            const studentSemesters = filtered.reduce((acc, cur) => {
-                acc[cur.semester] = cur;
-                return acc;
-            }, {});
-            setStudentDetails({
-                name: filtered[0].name,
-                rollNo: filtered[0].rollNo,
-                batch: filtered[0].batch,
-                branch: filtered[0].branch,
-                semesters: studentSemesters
-            });
-            setFilteredData(filtered);
-        } else {
-            setStudentDetails(null);
-            setFilteredData([]);
+        try {
+            const response = await axios.get(`http://localhost:4000/students`);
+            const allData = response.data.map(({ _id, __v, ...rest }) => rest); // Exclude _id and __v fields
+            
+            // Filter the data based on roll number and semester
+            const filtered = allData.filter(student => 
+                student.rollNo === rollNo && student.semester === semester
+            );
+            
+            if (filtered.length > 0) {
+                const studentSemesters = filtered.reduce((acc, cur) => {
+                    acc[cur.semester] = cur;
+                    return acc;
+                }, {});
+                setStudentDetails({
+                    name: filtered[0].name,
+                    rollNo: filtered[0].rollNo,
+                    batch: filtered[0].batch,
+                    branch: filtered[0].branch,
+                    semesters: studentSemesters
+                });
+                setFilteredData(filtered);
+            } else {
+                setStudentDetails(null);
+                setFilteredData([]);
+            }
+        } catch (error) {
+            console.error('Error fetching filtered data:', error);
+            setMessage('Error fetching filtered data. Please try again.');
         }
     };
 
@@ -98,8 +107,8 @@ const UploadMarks = () => {
             credits: mark.credits,
             internalMarks: mark.internalMarks,
             grade: mark.grade,
-            sgpa: studentDetails.semesters[mark.semester].sgpa, // Set from student details for the specific semester
-            cgpa: studentDetails.semesters[mark.semester].cgpa, // Set from student details for the specific semester
+            sgpa: studentDetails.semesters[mark.semester]?.sgpa || '', // Set from student details for the specific semester
+            cgpa: studentDetails.semesters[mark.semester]?.cgpa || '', // Set from student details for the specific semester
             semester: mark.semester
         });
     };
@@ -107,7 +116,7 @@ const UploadMarks = () => {
     const handleSave = async () => {
         try {
             const updatedMark = { ...editingMark, ...formValues };
-            const response = await axios.put(`http://localhost:4000/students/${studentDetails.rollNo}`, updatedMark);
+            await axios.put(`http://localhost:4000/students/${studentDetails.rollNo}`, updatedMark);
             const updatedMarks = filteredData.map(mark => mark.subjectCode === editingMark.subjectCode ? updatedMark : mark);
             setFilteredData(updatedMarks);
             setStudentDetails(prevDetails => ({

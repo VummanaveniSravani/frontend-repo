@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import CocurricularTabs from './CocurricularTabs';
+import ExtraCurricularTabs from './ExtraCurricularTabs';
 
-const CocurricularActivities = ({ onActivityAdded = () => {} }) => {
+const ExtraCuricullarActivities = ({ onActivityAdded = () => {} }) => {
   const [sname, setStudentname] = useState('');
   const [rno, setRollno] = useState('');
   const [branch, setBranch] = useState('');
-  const [aname, setActivities] = useState('');
+  const [aname, setArt] = useState('');
+  const [mname, setMusic] = useState('');
+  const [pname, setSports] = useState('');
+  const [acname, setAcademic] = useState('');
   const [date, setDate] = useState('');
   const [year, setYear] = useState('');
   const [description, setDescription] = useState('');
@@ -21,6 +24,9 @@ const CocurricularActivities = ({ onActivityAdded = () => {} }) => {
     if (!rno) newErrors.rno = 'Roll number is required';
     if (!branch) newErrors.branch = 'Branch is required';
     if (!aname) newErrors.aname = 'Activity name is required';
+    if (!pname) newErrors.pname = 'Activity name is required';
+    if (!mname) newErrors.mname = 'Activity name is required';
+    if (!acname) newErrors.acname = 'Activity name is required';
     if (!date) newErrors.date = 'Date is required';
     if (!year) newErrors.year = 'Academic Year is required';
     if (!description) newErrors.description = 'Description is required';
@@ -38,10 +44,10 @@ const CocurricularActivities = ({ onActivityAdded = () => {} }) => {
       return;
     }
 
-    const myActivity = { sname, rno, branch, aname, date, year, description, host };
+    const eActivity = { sname,rno,branch,aname,pname,mname,acname,date,year,description,host };
 
     try {
-      const response = await axios.post('http://localhost:4000/activity', myActivity, {
+      const response = await axios.post('http://localhost:4000/eactivity', eActivity, {
         headers: {
           'Content-Type': 'application/json'
         }
@@ -52,8 +58,11 @@ const CocurricularActivities = ({ onActivityAdded = () => {} }) => {
       setStudentname('');
       setRollno('');
       setBranch('');
-      setActivities('');
       setDate('');
+      setArt('');
+      setMusic('')
+      setSports('');
+      setAcademic('');
       setYear('');
       setDescription('');
       setHost('');
@@ -65,7 +74,7 @@ const CocurricularActivities = ({ onActivityAdded = () => {} }) => {
 
   const fetchStudentActivities = async (rollNo) => {
     try {
-      const response = await axios.get(`http://localhost:4000/activity?rollNo=${rollNo}`);
+      const response = await axios.get(`http://localhost:4000/eactivity?rollNo=${rollNo}`);
       setStudentActivities(response.data);
     } catch (error) {
       console.error('Error fetching student activities:', error.message);
@@ -112,18 +121,55 @@ const CocurricularActivities = ({ onActivityAdded = () => {} }) => {
           </div>
           <div className="col-12 col-sm-6 col-md-6 col-lg-6">
             <label className="form-label"></label>
+            <select className="form-control mb-3 form-select" value={pname}
+              onChange={(e) => setSports(e.target.value)}>
+              <option value="">Sports</option>
+              <option value="Soccer">Soccer</option>
+              <option value="Basketball">Basketball</option>
+              <option value="Vallyball">Vallyball</option>
+              <option value="Tennis">Tennis  </option>
+              <option value="Swimming">Swimming</option>
+              <option value="Cricket">Cricket</option>
+            </select>
+            {/* {errors.pname && <span style={{ color: 'red' }}>{errors.pname}</span>} */}
+          </div>
+          <div className="col-12 col-sm-6 col-md-6 col-lg-6">
+            <label className="form-label"></label>
             <select className="form-control mb-3 form-select" value={aname}
-              onChange={(e) => setActivities(e.target.value)}>
-              <option value="">Activity Name</option>
-              <option value="Technical Workshops and Seminars">Technical Workshops and Seminars</option>
-              <option value="Hackathons and Coding Competitions">Hackathons and Coding Competitions</option>
-              <option value="Robotics Club">Robotics Club</option>
-              <option value="Engineering Design Competitions">Engineering Design Competitions</option>
-              <option value="Technical Paper Presentations">Technical Paper Presentations</option>
-              <option value="Project Exhibitions">Project Exhibitions</option>
+              onChange={(e) => setArt(e.target.value)}>
+              <option value="">Arts</option>
+              <option value="Painting">Painting</option>
+              <option value="Drawing">Drawing</option>
+              <option value="Sculpting">Sculpting</option>
+              <option value="Photography">Photography  </option>
+              <option value="Graphic design">Graphic design</option>
               <option value="None">None</option>
             </select>
-            {errors.aname && <span style={{ color: 'red' }}>{errors.aname}</span>}
+            {/* {errors.aname && <span style={{ color: 'red' }}>{errors.aname}</span>} */}
+          </div>
+          <div className="col-12 col-sm-6 col-md-6 col-lg-6">
+            <label className="form-label"></label>
+            <select className="form-control mb-3 form-select" value={mname}
+              onChange={(e) => setMusic(e.target.value)}>
+              <option value="">Music</option>
+              <option value="Playing an instrument">Playing an instrument</option>
+              <option value="Choir">Choir</option>
+              <option value="Orchestra">Orchestra</option>
+              <option value="None">None</option>
+            </select>
+            {errors.mname && <span style={{ color: 'red' }}>{errors.mname}</span>}
+          </div>
+          <div className="col-12 col-sm-6 col-md-6 col-lg-6">
+            <label className="form-label"></label>
+            <select className="form-control mb-3 form-select" value={acname}
+              onChange={(e) => setAcademic(e.target.value)}>
+              <option value="">Academic Club</option>
+              <option value="Debate club">Debate club</option>
+              <option value="Robotics club">Robotics club</option>
+              <option value="Literature club">Literature club</option>
+              <option value="None">None</option>
+            </select>
+            {/* {errors.acname && <span style={{ color: 'red' }}>{errors.acname}</span>} */}
           </div>
           <div className="col-12 col-sm-6 col-md-6 col-lg-6">
             <label className="form-label"></label>
@@ -187,9 +233,9 @@ const CocurricularActivities = ({ onActivityAdded = () => {} }) => {
           </div>
         )}
       </div>
-      <CocurricularTabs />
+      <ExtraCurricularTabs/>
     </div>
   );
 };
 
-export default CocurricularActivities;
+export default ExtraCuricullarActivities;

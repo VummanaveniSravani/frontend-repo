@@ -50,7 +50,7 @@ const NewMarksForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/add-student', formData);
+      await axios.post('http://localhost:4000/add-student', formData);
       alert('Student data submitted');
     } catch (error) {
       console.error('Error submitting student data:', error);
@@ -59,7 +59,7 @@ const NewMarksForm = () => {
 
   const handleFilter = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/students/${rollNoFilter}`);
+      const response = await axios.get(`http://localhost:4000/students/${rollNoFilter}`);
       setFilteredStudents(response.data);
     } catch (error) {
       console.error('Error fetching student data:', error);
@@ -74,7 +74,7 @@ const NewMarksForm = () => {
   const handleSave = async (index) => {
     const updatedStudent = filteredStudents[index];
     try {
-      await axios.put(`http://localhost:5000/update-student/${updatedStudent._id}`, updatedStudent);
+      await axios.put(`http://localhost:4000/update-student/${updatedStudent._id}`, updatedStudent);
       setIsEditing(false);
       setCurrentEditIndex(null);
       handleFilter(); // Refresh the filtered data

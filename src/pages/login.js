@@ -26,7 +26,7 @@ const Login = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:5000/login', input);
+      const response = await axios.post('http://localhost:4000/login', input);
       console.log(response.data);
       const { user } = response.data;
       

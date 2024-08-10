@@ -7,7 +7,7 @@ const DocumentList = () => {
   useEffect(() => {
     const fetchDocuments = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/documents');
+        const response = await axios.get('http://localhost:4000/documents');
         setDocuments(response.data);
       } catch (error) {
         console.error('Error fetching documents:', error);
@@ -32,7 +32,7 @@ const DocumentList = () => {
             <tr key={document.id}>
               <td>{document.rollNumber}</td>
               <td>
-                <a href={`http://localhost:5000${document.fileUrl}`} target="_blank" rel="noopener noreferrer">
+                <a href={`http://localhost:4000${document.fileUrl}`} target="_blank" rel="noopener noreferrer">
                   {document.fileName}
                 </a>
               </td>
