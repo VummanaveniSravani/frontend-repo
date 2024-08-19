@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import CocurricularTabs from './CocurricularTabs';
-
-const CocurricularList = ({ onActivityAdded = () => { } }) => {
-    const apiUrl = process.env.REACT_APP_API_URL;
+function EactivitiesList({ onActivityAdded = () => { } }) {
+      const apiUrl = process.env.REACT_APP_API_URL;
 
     const [studentActivities, setStudentActivities] = useState([]);
     const fetchStudentActivities = async () => {
         try {
-            const response = await axios.get(`https://improved-fiesta-9rxvp57wwrqh464-3000.app.github.dev/activity`);
+            const response = await axios.get(`https://improved-fiesta-9rxvp57wwrqh464-3000.app.github.dev/eactivity`);
             setStudentActivities(response.data);
         } catch (error) {
             console.error('Error fetching student activities:', error.message);
@@ -32,7 +30,10 @@ const CocurricularList = ({ onActivityAdded = () => { } }) => {
                                         <th>Roll No</th>
                                         <th>Name</th>
                                         <th>Branch</th>
-                                        <th>Activity Name</th>
+                                        <th>Arts</th>
+                                        <th>Sports</th>
+                                        <th>Music</th>
+                                        <th>Academic Club</th>
                                         <th>Participation Date</th>
                                         <th>Participation Year</th>
                                         <th>Description</th>
@@ -40,16 +41,20 @@ const CocurricularList = ({ onActivityAdded = () => { } }) => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {studentActivities.map(activity => (
-                                        <tr key={activity._id}>
-                                            <td>{activity.rno}</td>
-                                            <td>{activity.sname}</td>
-                                            <td>{activity.branch}</td>
-                                            <td>{activity.aname}</td>
-                                            <td>{new Date(activity.date).toLocaleDateString()}</td>
-                                            <td>{activity.year}</td>
-                                            <td>{activity.description}</td>
-                                            <td>{activity.host}</td>
+                                    {studentActivities.map(eactivity => (
+                                        <tr key={eactivity._id}>
+                                            <td>{eactivity.rno}</td>
+                                            <td>{eactivity.sname}</td>
+                                            <td>{eactivity.branch}</td>
+                                            <td>{eactivity.aname}</td>                                            
+                                            <td>{eactivity.pname}</td>
+                                            <td>{eactivity.mname}</td>
+                                            <td>{eactivity.acname}</td>
+
+                                            <td>{new Date(eactivity.date).toLocaleDateString()}</td>
+                                            <td>{eactivity.year}</td>
+                                            <td>{eactivity.description}</td>
+                                            <td>{eactivity.host}</td>
                                         </tr>
                                     ))}
                                 </tbody>
@@ -64,4 +69,4 @@ const CocurricularList = ({ onActivityAdded = () => { } }) => {
     );
 }
 
-export default CocurricularList;
+export default EactivitiesList;

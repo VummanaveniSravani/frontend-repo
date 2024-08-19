@@ -64,7 +64,7 @@ const StudentForm = ({ onStudentAdded = () => {} }) =>  {
   };
 
   return (
-    <div className='container width-35'>
+    <div className='w-50'>
       <h5>Enter Student Details</h5>
       <form className='row' onSubmit={handleSubmit}>
         <div className="col-12 col-sm-6 col-md-6 col-lg-6">

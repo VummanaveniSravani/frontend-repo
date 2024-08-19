@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const ActivityFilter = ({ onActivityAdded = () => { } }) => {
+const ExtraActivityFilter = ({ onActivityAdded = () => { } }) => {
   const [studentActivities, setStudentActivities] = useState([]);
   const [rollNoFilter, setRollNoFilter] = useState('');
   const apiUrl = process.env.REACT_APP_API_URL;
@@ -15,7 +15,7 @@ const ActivityFilter = ({ onActivityAdded = () => { } }) => {
 
     try {
       console.log('Fetching activities for rollNo:', rollNo); // Debugging line
-      const response = await axios.get(`https://improved-fiesta-9rxvp57wwrqh464-3000.app.github.dev/activity`, {
+      const response = await axios.get(`https://improved-fiesta-9rxvp57wwrqh464-3000.app.github.dev/eactivity`, {
         params: { rollNo }
       });
       console.log('Activities response:', response.data); // Debugging line
@@ -57,7 +57,10 @@ const ActivityFilter = ({ onActivityAdded = () => { } }) => {
                   <th>RollNo</th>
                   <th>Name</th>
                   <th>Branch</th>
-                  <th>Activity Name</th>
+                  <th>Sports</th>
+                  <th>Arts</th>
+                  <th>Music</th>
+                  <th>Academic Club</th>
                   <th>Participation Date</th>
                   <th>Participation Year</th>
                   <th>Description</th>
@@ -65,16 +68,19 @@ const ActivityFilter = ({ onActivityAdded = () => { } }) => {
                 </tr>
               </thead>
               <tbody>
-                {studentActivities.map(activity => (
-                  <tr key={activity._id} className="activity-card">
-                    <td>{activity.rno}</td>
-                    <td>{activity.sname}</td>
-                    <td>{activity.branch}</td>
-                    <td>{activity.aname}</td>
-                    <td>{new Date(activity.date).toLocaleDateString()}</td>
-                    <td>{activity.year}</td>
-                    <td>{activity.description}</td>
-                    <td>{activity.host}</td>
+                {studentActivities.map(eactivity => (
+                  <tr key={eactivity._id} className="activity-card">
+                    <td>{eactivity.rno}</td>
+                    <td>{eactivity.sname}</td>
+                    <td>{eactivity.branch}</td>
+                    <td>{eactivity.aname}</td>
+                    <td>{eactivity.pname}</td>
+                    <td>{eactivity.mname}</td>
+                    <td>{eactivity.acname}</td>
+                    <td>{new Date(eactivity.date).toLocaleDateString()}</td>
+                    <td>{eactivity.year}</td>
+                    <td>{eactivity.description}</td>
+                    <td>{eactivity.host}</td>
                   </tr>
                 ))}
               </tbody>
@@ -88,4 +94,4 @@ const ActivityFilter = ({ onActivityAdded = () => { } }) => {
   );
 };
 
-export default ActivityFilter;
+export default ExtraActivityFilter;

@@ -13,7 +13,8 @@ import CoCurricularList from '../components/CocurricularList';
 import DocumentUploadForm from '../components/DocumentUploadForm';
 import FilterDocument from '../components/FilterDocuments';
 import FilterStudentMarks from '../components/FilterStudentMarks';
-
+import DisplayStudentList from '../components/DisplayStudentList';
+import EactivitiesList from '../components/EactivitiesList';
 
 const Nav = () => {
     return (
@@ -30,12 +31,13 @@ const Nav = () => {
               <Route path="/" element={<Login />} />
               <Route path="/upload-documents" element={<DocumentUploadForm />} />
               <Route path="/view-documents" element={<FilterDocument />}/>
-              <Route path='/student-profile' element={<StudentProfile/>}/>
+              <Route path='/student-profile' element={<DisplayStudentList/>}/>
               <Route path='/single-student-profile' element={<SingleStudent/>}/>
               <Route path='/cocurricular-activities-list' element={<CoCurricularList/>}/>
               <Route path='/view-marks' element={<FilterStudentMarks/>}/>
               <Route path="/admin-form" component={Admin} />
               <Route path="/student-details" component={Student} />
+              <Route path='/list' element={<EactivitiesList/>}/>
               <Route path="/" component={Student} /> {/* Default to student details */}
           </Routes>
         </Router>
@@ -43,4 +45,4 @@ const Nav = () => {
     );
 }
 
-export default Nav;
+export default Nav; 

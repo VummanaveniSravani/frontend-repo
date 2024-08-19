@@ -4,6 +4,7 @@ import EnterMarksEce from './EnterMarksEce';
 import EnterMarksEee from './EnterMarksEee';
 import axios from 'axios';
 import UploadMarks from './UploadMarks';
+import StudentMarks from './StudentMarks';
 
 const EnterMarks = () => {
   const [branch, setBranch] = useState('');
@@ -13,7 +14,8 @@ const EnterMarks = () => {
     batch: '',
     branch: '',
   });
-  
+  const apiUrl = process.env.REACT_APP_API_URL;
+
   const handleBranchChange = (e) => {
     setBranch(e.target.value);
     setStudentDetails({ ...studentDetails, branch: e.target.value });
@@ -28,7 +30,7 @@ const EnterMarks = () => {
 
   const handleMarksSubmit = async (semester, mark) => {
     try {
-      await axios.post('http://localhost:5000/api/marks', {
+      await axios.post(`https://improved-fiesta-9rxvp57wwrqh464-3000.app.github.dev/api/marks`, {
         ...studentDetails,
         semester,
         ...mark,
@@ -42,7 +44,8 @@ const EnterMarks = () => {
 
   return (
     <div className='container'>
-      <UploadMarks/>
+      {/* <UploadMarks/> */}
+      <StudentMarks/>
       <form className='row pt-5'>
         <div className="col-md-3 mb-3">
           <input

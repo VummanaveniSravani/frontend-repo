@@ -11,6 +11,7 @@ const DisplayMarks = ({ studentDetails }) => {
     internalMarks: '',
     grade: ''
   });
+  const apiUrl = process.env.REACT_APP_API_URL;
 
   const groupMarksBySemester = (marks) => {
     return marks.reduce((acc, mark) => {
@@ -44,7 +45,7 @@ const DisplayMarks = ({ studentDetails }) => {
   const handleSave = async () => {
     try {
       const updatedMark = { ...editingMark, ...formValues };
-      const response = await axios.put(`http://localhost:5000/api/marks/${editingMark._id}`, updatedMark);
+      const response = await axios.put(`https://improved-fiesta-9rxvp57wwrqh464-3000.app.github.dev/api/marks/${editingMark._id}`, updatedMark);
       const updatedMarks = marks.map(mark => mark._id === editingMark._id ? updatedMark : mark);
       setMarks(updatedMarks);
       setEditingMark(null);
@@ -55,7 +56,7 @@ const DisplayMarks = ({ studentDetails }) => {
 
   const handleDelete = async (markId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/marks/${markId}`);
+      await axios.delete(`https://improved-fiesta-9rxvp57wwrqh464-3000.app.github.dev/api/marks/${markId}`);
       setMarks(marks.filter(mark => mark._id !== markId));
     } catch (error) {
       console.error('Error deleting mark:', error);

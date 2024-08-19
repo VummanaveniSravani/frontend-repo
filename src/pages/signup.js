@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-const Signup = () => {
+const Signup = ({ onSignup = () => {} }) => {
     const [input, setInput] = useState({
         fname: "",
         lname: "",
@@ -13,6 +13,7 @@ const Signup = () => {
     });
     const [errors, setErrors] = useState({});
     const [submitted, setSubmitted] = useState(false);
+  
 
     const validateForm = () => {
         const newErrors = {};
@@ -40,10 +41,13 @@ const Signup = () => {
         if (!validateForm()) {
             return;
         }
-        axios.post('http://localhost:5000/signup', input)
+        axios.post('https://improved-fiesta-9rxvp57wwrqh464-3000.app.github.dev/signup', input)
             .then(response => {
                 console.log(response.data);
                 setSubmitted(true);
+                onSignup(response.data);
+                setSubmitted(true);
+                setInput('');
             })
             .catch(error => {
                 console.error('There was an error!', error);

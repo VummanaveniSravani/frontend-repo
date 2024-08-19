@@ -16,11 +16,12 @@ const StudentProfile = ({ newStudent }) => {
         address: '',
         document: '', // Added document to editFormData
     });
+    const apiUrl = process.env.REACT_APP_API_URL;
 
     useEffect(() => {
         const fetchStudents = async () => {
             try {
-                const response = await axios.get('http://localhost:3001/student');
+                const response = await axios.get(`https://improved-fiesta-9rxvp57wwrqh464-3000.app.github.dev/student`);
                 setStudents(response.data);
             } catch (error) {
                 console.error('Error fetching students:', error);
@@ -28,7 +29,10 @@ const StudentProfile = ({ newStudent }) => {
         };
 
         fetchStudents();
-    }, [newStudent]);
+    }, [newStudent]
+
+
+);
 
     const handleEditClick = (student) => {
         setEditingStudent(student.id);
@@ -53,7 +57,7 @@ const StudentProfile = ({ newStudent }) => {
     const handleEditFormSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.put(`http://localhost:3001/student/${editingStudent}`, editFormData);
+            const response = await axios.put(`https://improved-fiesta-9rxvp57wwrqh464-3000.app.github.dev/students/${editingStudent}`, editFormData);
             setStudents(students.map(student => (student.id === editingStudent ? response.data : student)));
             setEditingStudent(null);
         } catch (error) {

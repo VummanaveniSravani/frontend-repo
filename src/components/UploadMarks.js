@@ -20,11 +20,12 @@ const UploadMarks = () => {
         cgpa: '',
         semester: ''
     });
+    const apiUrl = process.env.REACT_APP_API_URL;
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://localhost:4000/students');
+                const response = await axios.get(`https://improved-fiesta-9rxvp57wwrqh464-3000.app.github.dev/students`);
                 const filteredResponseData = response.data.map(({ _id, __v, ...rest }) => rest); // Exclude _id and __v fields
                 setData(filteredResponseData);
             } catch (error) {
@@ -49,13 +50,13 @@ const UploadMarks = () => {
         formData.append('file', file);
 
         try {
-            await axios.post('http://localhost:4000/upload', formData, {
+            await axios.post(`https://improved-fiesta-9rxvp57wwrqh464-3000.app.github.dev/upload`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
             });
             setMessage('File uploaded and data saved to database successfully.');
-            const response = await axios.get('http://localhost:4000/students');
+            const response = await axios.get(`${apiUrl}/students`);
             const filteredResponseData = response.data.map(({ _id, __v, ...rest }) => rest); // Exclude _id and __v fields
             setData(filteredResponseData);
         } catch (error) {
@@ -107,7 +108,7 @@ const UploadMarks = () => {
     const handleSave = async () => {
         try {
             const updatedMark = { ...editingMark, ...formValues };
-            const response = await axios.put(`http://localhost:4000/students/${studentDetails.rollNo}`, updatedMark);
+            const response = await axios.put(`https://improved-fiesta-9rxvp57wwrqh464-3000.app.github.dev/students/${studentDetails.rollNo}`, updatedMark);
             const updatedMarks = filteredData.map(mark => mark.subjectCode === editingMark.subjectCode ? updatedMark : mark);
             setFilteredData(updatedMarks);
             setStudentDetails(prevDetails => ({
@@ -129,7 +130,7 @@ const UploadMarks = () => {
 
     const handleDelete = async (subjectCode) => {
         try {
-            await axios.delete(`http://localhost:4000/students/${studentDetails.rollNo}/${subjectCode}`);
+            await axios.delete(`https://improved-fiesta-9rxvp57wwrqh464-3000.app.github.dev/students/${studentDetails.rollNo}/${subjectCode}`);
             const updatedData = filteredData.filter(student => student.subjectCode !== subjectCode);
             setFilteredData(updatedData);
             setMessage('Data deleted successfully.');
@@ -163,8 +164,8 @@ const UploadMarks = () => {
     const uniqueSemesters = [...new Set(data.map(item => item.semester))];
 
     return (
-        <div className="container mt-5">
-            <h2 className="mb-4">Upload Marks</h2>
+        <div className="mt-5">
+            <h4 className="mb-4 text-center">Upload Marks</h4>
             <div className='row'>
                 <div className='col-md-3'></div>
                 <div className='col-md-6'>

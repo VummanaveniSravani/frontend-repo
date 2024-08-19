@@ -24,15 +24,16 @@ const Login = () => {
     if (!validateForm()) {
       return;
     }
-
+  
     try {
-      const response = await axios.post('http://localhost:5000/login', input);
+      const response = await axios.post('https://improved-fiesta-9rxvp57wwrqh464-3000.app.github.dev/login', input);
       console.log(response.data);
-      const { user } = response.data;
+      const { token, user } = response.data;
       
       // Save user data to localStorage
       localStorage.setItem('user', JSON.stringify(user)); 
-
+      localStorage.setItem('token', token); // Save token if needed for authenticated requests
+  
       // Navigate to the appropriate route based on role
       switch (user.role) {
         case "admin":
@@ -57,11 +58,8 @@ const Login = () => {
       console.error('Error logging in:', error);
       alert(error.response?.data?.message || "Wrong email id or password");
     }
-};
-
-
+  };
   
-
   return (
     <div className='page-height'>
       <div className='login-bg container-fluid d-flex justify-content-center align-items-center'>

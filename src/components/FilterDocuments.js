@@ -4,6 +4,7 @@ import axios from 'axios';
 const FilterDocuments = () => {
   const [allFiles, setAllFiles] = useState([]);
   const [filterRollNo, setFilterRollNo] = useState('');
+  const apiUrl = process.env.REACT_APP_API_URL;
 
   // Function to fetch files based on roll number
   const getFiles = async () => {
@@ -13,7 +14,7 @@ const FilterDocuments = () => {
     }
 
     try {
-      const result = await axios.get("http://localhost:5000/get-files", {
+      const result = await axios.get(`${apiUrl}/get-files`, {
         params: { rollNo: filterRollNo }
       });
       console.log(result.data.data);
@@ -24,7 +25,7 @@ const FilterDocuments = () => {
   };
 
   const showPdf = (pdf) => {
-    window.open(`http://localhost:5000/files/${pdf}`, '_blank', 'noreferrer');
+    window.open(`${apiUrl}/files/${pdf}`, '_blank', 'noreferrer');
   };
 
   return (

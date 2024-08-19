@@ -6,6 +6,7 @@ const FilterStudentMarksTwo = () => {
     const [searchRollNo, setSearchRollNo] = useState('');
     const [searchedStudent, setSearchedStudent] = useState(null);
     const [error, setError] = useState('');
+    const apiUrl = process.env.REACT_APP_API_URL;
 
     const handleSearch = async (e) => {
         e.preventDefault(); // Prevent the form from submitting and refreshing the page
@@ -16,7 +17,7 @@ const FilterStudentMarksTwo = () => {
         }
 
         try {
-            const { data } = await axios.get(`http://localhost:5000/api/marks/${searchRollNo}`);
+            const { data } = await axios.get(`https://improved-fiesta-9rxvp57wwrqh464-3000.app.github.dev/marks/${searchRollNo}`);
             if (data.length > 0) {
                 const details = {
                     ...data[0],

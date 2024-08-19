@@ -5,11 +5,12 @@ const FilterUploadedMarks = () => {
   const [data, setData] = useState([]);
   const [rollNo, setRollNo] = useState('');
   const [filteredData, setFilteredData] = useState([]);
+  const apiUrl = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/students');
+        const response = await axios.get(`https://improved-fiesta-9rxvp57wwrqh464-3000.app.github.dev/students`);
         setData(response.data);
         setFilteredData(response.data);
       } catch (error) {

@@ -10,11 +10,12 @@ const UploadMarks = () => {
     const [message, setMessage] = useState('');
     const [editMode, setEditMode] = useState({}); // New state for edit mode
     const [editData, setEditData] = useState({}); // New state for edit data
+    const apiUrl = process.env.REACT_APP_API_URL;
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://localhost:4000/students');
+                const response = await axios.get(`https://improved-fiesta-9rxvp57wwrqh464-3000.app.github.dev/students`);
                 const filteredResponseData = response.data.map(({ _id, __v, ...rest }) => rest); // Exclude _id and __v fields
                 setData(filteredResponseData);
             } catch (error) {
