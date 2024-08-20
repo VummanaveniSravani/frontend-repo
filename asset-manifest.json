@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/frontend-repo/static/css/main.16ab41ba.css",
-    "main.js": "/frontend-repo/static/js/main.27bb14be.js",
-    "static/media/authBackground.jpg": "/frontend-repo/static/media/authBackground.0b08a66aa55a75739d28.jpg",
-    "index.html": "/frontend-repo/index.html",
-    "main.16ab41ba.css.map": "/frontend-repo/static/css/main.16ab41ba.css.map",
-    "main.27bb14be.js.map": "/frontend-repo/static/js/main.27bb14be.js.map"
+    "main.css": "/student-frontend/static/css/main.b87f105f.css",
+    "main.js": "/student-frontend/static/js/main.bd6fbc63.js",
+    "static/media/authBackground.jpg": "/student-frontend/static/media/authBackground.0b08a66aa55a75739d28.jpg",
+    "index.html": "/student-frontend/index.html",
+    "main.b87f105f.css.map": "/student-frontend/static/css/main.b87f105f.css.map",
+    "main.bd6fbc63.js.map": "/student-frontend/static/js/main.bd6fbc63.js.map"
   },
   "entrypoints": [
-    "static/css/main.16ab41ba.css",
-    "static/js/main.27bb14be.js"
+    "static/css/main.b87f105f.css",
+    "static/js/main.bd6fbc63.js"
   ]
 }
