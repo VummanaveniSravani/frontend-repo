@@ -172,8 +172,8 @@ const UploadMarks = () => {
     const uniqueSemesters = [...new Set(data.map(item => item.semester))];
 
     return (
-        <div className="container mt-5">
-            <h2 className="mb-4">Upload Marks</h2>
+        <div className="">
+            <h4 className="mb-4 text-center">Upload Marks</h4>
             <div className='row'>
                 <div className='col-md-3'></div>
                 <div className='col-md-6'>

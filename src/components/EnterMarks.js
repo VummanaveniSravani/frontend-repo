@@ -4,6 +4,7 @@ import EnterMarksEce from './EnterMarksEce';
 import EnterMarksEee from './EnterMarksEee';
 import axios from 'axios';
 import UploadMarks from './UploadMarks';
+import StudentMarks from './StudentMarks';
 
 const EnterMarks = () => {
   const [branch, setBranch] = useState('');
@@ -42,8 +43,9 @@ const EnterMarks = () => {
 
   return (
     <div className='container'>
-      <UploadMarks/>
-      <form className='row pt-5'>
+      {/* <UploadMarks/> */}
+      <StudentMarks/>
+      {/* <form className='row pt-5'>
         <div className="col-md-3 mb-3">
           <input
             type="text"
@@ -95,7 +97,7 @@ const EnterMarks = () => {
       {branch === 'CSE' && <EnterMarksCse onSubmit={handleMarksSubmit} />}
       {branch === 'EEE' && <EnterMarksEee onSubmit={handleMarksSubmit} />}
       {branch === 'ECE' && <EnterMarksEce onSubmit={handleMarksSubmit} />}
-   
+    */}
     </div>
   );
 };

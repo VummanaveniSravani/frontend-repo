@@ -84,7 +84,7 @@ const ExtraCuricullarActivities = ({ onActivityAdded = () => {} }) => {
   return (
     <div>
       <div className='container width-35'>
-        <h5>Enter Activities</h5>
+        <h4>Enter Activities</h4>
         <form className='row' onSubmit={handleSubmit}>
           <div className="col-12 col-sm-6 col-md-6 col-lg-6">
             <label className="form-label"></label>

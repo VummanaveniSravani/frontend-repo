@@ -63,13 +63,13 @@ const UploadStudentDetails = () => {
   }, []);
 
   return (
-    <div className="container mt-5">
-      <h2 className="mb-4">Upload Student Details</h2>
-      <div className="d-flex gap-2 mb-3">
+    <div className="mt-5 container">
+      <h4 className="mb-4">Upload Student Details</h4>
+      <div className="d-flex gap-2 mb-3 w-50">
         <input type="file" className="form-control" onChange={handleFileChange} />
         <button className="btn btn-primary" onClick={handleFileUpload}>Upload</button>
       </div>
-      <div className="mb-4">
+      <div className="mb-4 w-50">
         <input
           type="text"
           className="form-control"
@@ -88,12 +88,14 @@ const UploadStudentDetails = () => {
               <th>Name</th>
               <th>Father Name</th>
               <th>Roll No</th>
+              <th>Batch</th>
+              <th>Branch</th>
               <th>Mobile Number</th>
               <th>Parent Number</th>
               <th>Email</th>
               <th>Date of Birth</th>
-              <th>Address</th>
               <th>Gender</th>
+              <th>Address</th>
             </tr>
           </thead>
           <tbody>
@@ -108,8 +110,8 @@ const UploadStudentDetails = () => {
                 <td>{student.parentNumber}</td>
                 <td>{student.email}</td>
                 <td>{new Date(student.dateOfBirth).toLocaleDateString()}</td>
-                <td>{student.address}</td>
                 <td>{student.gender}</td>
+                <td>{student.address}</td>
               </tr>
           
           </tbody>

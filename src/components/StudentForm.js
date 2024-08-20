@@ -64,8 +64,10 @@ const StudentForm = ({ onStudentAdded = () => {} }) =>  {
   };
 
   return (
-    <div className='container width-35'>
-      <h5>Enter Student Details</h5>
+    <div className='container'>
+      <div className='row'>
+        <div className='col-12 col-md-6'>
+      <h4>Enter Student Details</h4>
       <form className='row' onSubmit={handleSubmit}>
         <div className="col-12 col-sm-6 col-md-6 col-lg-6">
           <label htmlFor="validationDefault01" className="form-label"></label>
@@ -190,6 +192,9 @@ const StudentForm = ({ onStudentAdded = () => {} }) =>  {
           </div>
         )}
       </form>
+      </div>
+      <div className='col-12 col-md-6'></div>
+      </div>
       {/* <div className='pt-3'><Link to="/upload-documents">Upload Student Documents</Link></div> */}
       {/* <DocumentUploadForm /> */}
       {/* <DocumentList/> */}
